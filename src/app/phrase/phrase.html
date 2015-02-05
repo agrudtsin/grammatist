@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row col-md-9 col-md-offset-1 custyle">
+    {{ctrl.stateParamms}}
+    <button ng-click="ctrl.fire()">Fire</button>
+    <br>
+    {{ctrl.currentPhrase}}
+    <br>
+    <button class="btn" ng-click="ctrl.goToNextPhrase()" ng-hide="ctrl.thiIsTheLastPhrase()">Следующая фраза</button>
+    <button class="btn" ng-click="ctrl.onNextCathegory()" ng-show="ctrl.thiIsTheLastPhrase()">Упражение закончено</button>
+    <h4>Рабочий набор фраз</h4>
+    <div class="list-group">
+
+        <div ng-repeat="(phraseID, phrase) in ctrl.phrases track by phraseID" ng-show="!ctrl.filterByCategory">
+          <a class="list-group-item" ng-click="ctrl.onSelectCategory(phraseID)">
+            <h4 class="list-group-item-heading">{{phrase.textEn}}</h4>
+            <p class="list-group-item-text">{{phrase.textRus}}</p>
+          </a>
+
+        </div>
+    </div>
+  </div>
+
+
+</div>
+

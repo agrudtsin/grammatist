@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row col-md-9 col-md-offset-1 custyle">
+    <h2>Фразы</h2>
+    <div class="list-group">
+      <a class="list-group-item disabled">
+        <h4 ng-show="!ctrl.filterByCategory">Выбирите катеорию</h4>
+        <h4 ng-show="!!ctrl.filterByCategory">{{ctrl.filterByCategory.title}}</h4>
+        <a class="btn btn-danger btn-xs"
+           ng-click="ctrl.filterByCategory = undefined" ng-show="!!ctrl.filterByCategory"><span
+          class="glyphicon glyphicon-filter"></span></a>
+
+        <div ng-repeat="(categoryID, category) in ctrl.categories track by categoryID" ng-show="!ctrl.filterByCategory">
+          <a class="list-group-item" ng-click="ctrl.onSelectCategory(categoryID, category)">{{category.title}}</a>
+        </div>
+      </a>
+
+    </div>
+    <div id="phrasesCrud" ng-show="!!ctrl.filterByCategory">
+
+      <form>
+        <p>На английском: <textarea type="text" name='name0' placeholder='Название' class="form-control"
+                                    ng-model="ctrl.phraseToChange.textEn"/></p>
+
+        <p>На русском: <textarea type="text" name='name0' placeholder='Описание' class="form-control"
+                                 ng-model="ctrl.phraseToChange.textRus"/></p>
+        <a class="btn btn-primary btn-sm pull-right" ng-click="ctrl.addPhrase(ctrl.phraseToChange)"
+           ng-hide="ctrl.isChangeMode">Добавить фразу</a>
+        <a class="btn btn-primary btn-sm pull-right"
+           ng-click="ctrl.savePhrase(ctrl.phraseIDToChange, ctrl.phraseToChange)" ng-show="ctrl.isChangeMode">Сохранить
+          фразу</a>
+        <a class="btn btn-danger btn-sm pull-right" ng-click="ctrl.onDontSaveChanges()" ng-show="ctrl.isChangeMode">Не
+          сохранять фразу</a>
+      </form>
+      <br>
+      <table class="table table-hover table-condensed custab">
+        <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>На английском</th>
+          <th>На русском</th>
+          <th class="text-center">Действия</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="(phraseID, phrase) in ctrl.phrases track by phraseID">
+          <td ng-click="ctrl.tableOnSelect(phraseID,phrase)">{{phraseID}}</td>
+          <td ng-click="ctrl.tableOnSelect(phraseID,phrase)"><p>{{phrase.textEn}}</p></td>
+          <td ng-click="ctrl.tableOnSelect(phraseID,phrase)"><p>{{phrase.textRus}}</p></td>
+          <td class="text-center">
+            <a class="btn btn-danger btn-xs" ng-click="ctrl.removePhraseByID(phraseID)"><span
+              class="glyphicon glyphicon-remove"></span>Удалить</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</div>

@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module('grammatist')
-  .controller('NavbarCtrl', function ($scope) {
-    $scope.date = new Date();
+  .controller('NavbarCtrl', function (Users) {
+    var nc = this;
+    nc.users = Users;
+
+
   });

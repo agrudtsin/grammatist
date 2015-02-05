@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row col-md-9 col-md-offset-2 custyle">
+    <h2>Категории</h2>
+    <form>
+      <p>Название: <input type="text" name='name0'  placeholder='Название' class="form-control"
+                          ng-model="ctrl.categoryToChange.title"/></p>
+      <p>Описание: <textarea type="text" name='name0'  placeholder='Описание' class="form-control"
+                                ng-model="ctrl.categoryToChange.descr"/></p>
+      <a class="btn btn-primary btn-sm pull-right" ng-click="ctrl.addCategory(ctrl.categoryToChange)" ng-hide="ctrl.isChangeMode">Добавить категорию</a>
+      <a class="btn btn-primary btn-sm pull-right" ng-click="ctrl.saveCategory(ctrl.categoryIDToChange, ctrl.categoryToChange)" ng-show="ctrl.isChangeMode">Сохранить категорию</a>
+      <a class="btn btn-danger btn-sm pull-right" ng-click="ctrl.onDontSaveChanges()" ng-show="ctrl.isChangeMode">Не сохранять категорию</a>
+    </form>
+    <br>
+    <table class="table table-hover table-condensed custab">
+      <thead>
+
+      <tr>
+        <th>ID</th>
+        <th>Назваие</th>
+        <th>Описание</th>
+        <th class="text-center">Действия</th>
+      </tr>
+      </thead>
+        <tr ng-repeat="(categoryID, category) in ctrl.categories track by categoryID">
+         <td ng-click="ctrl.tableOnSelect(categoryID,category)">{{categoryID}}</td>
+         <td ng-click="ctrl.tableOnSelect(categoryID,category)"><p>{{category.title}}</p></td>
+         <td ng-click="ctrl.tableOnSelect(categoryID,category)"><p>{{category.descr}}</p></td>
+          <td class="text-center">
+           <a class="btn btn-danger btn-xs" ng-click="ctrl.removeCategoryByID(categoryID)"><span class="glyphicon glyphicon-remove"></span>Удалить</a>
+         </td>
+        </tr>
+
+    </table>
+  </div>
+
+
+
+</div>

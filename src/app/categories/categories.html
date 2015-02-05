@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row col-md-9 col-md-offset-1 custyle">
+    <h2>Выберите упражнение</h2>
+
+    <div class="list-group">
+
+        <div ng-repeat="(categoryID, category) in ctrl.categories track by categoryID" ng-show="!ctrl.filterByCategory">
+          <a class="list-group-item" ng-click="ctrl.onSelectCategory(categoryID)">
+            <h4 class="list-group-item-heading">{{category.title}}</h4>
+            <p class="list-group-item-text">{{category.descr}}</p>
+          </a>
+
+        </div>
+
+
+
+    </div>
+  </div>
+
+
+</div>
+

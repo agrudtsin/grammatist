@@ -1,16 +1,17 @@
-<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl">
+<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl as nc">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
+      <a class="navbar-brand" href="#/">
+        <span class="glyphicon glyphicon-home"></span> Граматист
       </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
+        <li><a ng-href="#/categories">Упражнения</a></li>
+        <li><a ng-href="#/auth">{{!!nc.users.currentUser ? nc.users.currentUser.password.email + '(выйти)' : 'Войти'}}</a></li>
+        <li><a ng-href="#/admin/categories" ng-show="!!nc.users.currentUser">Категории</a></li>
+        <li><a ng-href="#/admin/phrases" ng-show="!!nc.users.currentUser">Фразы</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

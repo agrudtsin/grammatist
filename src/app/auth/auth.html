@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <div class="account-wall">
+          <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+               alt="">
+          <form class="form-signin">
+            <h2 ng-show="!!vm.users.currentUser">{{vm.users.currentUser.password.email}}</h2>
+            <input type="text" class="form-control" placeholder="Email" required autofocus ng-model="vm.email" ng-hide="!!vm.users.currentUser" >
+            <input type="password" class="form-control" placeholder="Password" ng-model="vm.password" ng-hide="!!vm.users.currentUser" required>
+
+            <div class="alert alert-danger" role="alert" ng-hide="!vm.authErrorMessage">
+              <a class="alert-link" >{{vm.authErrorMessage}}</a>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="vm.login(vm.email, vm.password)" ng-hide="!!vm.users.currentUser">
+              Войти</button>
+            <button class="btn btn-lg btn-block btn-info" type="submit" ng-hide="!!vm.users.currentUser" ng-click="vm.createUser(vm.email, vm.password)">
+              Зарегистрироваться</button>
+            <button class="btn btn-lg btn-primary btn-block" ng-show="!!vm.users.currentUser" ng-click="vm.logout()">
+              Выйти</button>
+            </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
