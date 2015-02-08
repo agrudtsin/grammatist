@@ -1,0 +1,44 @@
+.AllTextAreas {
+
+  FONT-FAMILY: "PT Mono", monospace; /*"Verily Serif Mono",*/
+  Font-weight:normal;
+  FONT-SIZE: 24px;
+  BACKGROUND: none transparent scroll repeat 0 0;
+  margin-bottom:25px;
+  margin-left:30px;
+  width:90%;
+  CURSOR: none;
+  pointer-events: none;
+}
+.positionabsolute {
+  position:absolute;
+}
+.backgroundInput {
+  /*background: #FFF;   */
+  box-shadow: 2px 2px 3px 0 #DDD inset;
+
+}
+
+textarea:focus{
+  outline: 0;
+}
+
+.CommonFormat {
+  border-radius: 4px;
+  padding: 8px 8px 8px 12px;
+  overflow:hidden;
+  autoSize:left;
+  wordWrap:true;
+  resize: none;
+  BORDER: #CCE solid 1px;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
+
+
+.DivNativeText {
+  margin-top:10px;
+  FONT-SIZE: 16px;
+}

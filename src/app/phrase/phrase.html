@@ -1,25 +1,72 @@
-<div class="container">
+<div class="container" ng-cloak>
   <div class="row col-md-9 col-md-offset-1 custyle">
     {{ctrl.stateParamms}}
     <button ng-click="ctrl.fire()">Fire</button>
     <br>
-    {{ctrl.currentPhrase}}
+
     <br>
     <button class="btn" ng-click="ctrl.goToNextPhrase()" ng-hide="ctrl.thiIsTheLastPhrase()">Следующая фраза</button>
-    <button class="btn" ng-click="ctrl.onNextCathegory()" ng-show="ctrl.thiIsTheLastPhrase()">Упражение закончено</button>
-    <h4>Рабочий набор фраз</h4>
-    <div class="list-group">
+    <button class="btn" ng-click="ctrl.onNextCathegory()" ng-show="ctrl.thiIsTheLastPhrase()">Упражение закончено
+    </button>
 
-        <div ng-repeat="(phraseID, phrase) in ctrl.phrases track by phraseID" ng-show="!ctrl.filterByCategory">
-          <a class="list-group-item" ng-click="ctrl.onSelectCategory(phraseID)">
-            <h4 class="list-group-item-heading">{{phrase.textEn}}</h4>
-            <p class="list-group-item-text">{{phrase.textRus}}</p>
-          </a>
 
-        </div>
+    <div id="MiddleColumn" class="MiddleColumn">
+      <br>
+      <div 	id="NativeLanguagePhrase"
+            class="DivNativeText AllTextAreas CommonFormat backgroundInput"
+            unselectable='on'
+            onselectstart='return false;'
+            onmousedown='return false;'>
+        {{ctrl.currentPhrase.textRus}}
+      </div>
+
+      <!-- Spaces and markup -->
+      <div id="LaeyredTextAreas">
+        <!-- underline -->
+			<textarea id="UnderlinesForPhrase"
+        readonly
+        class="AllTextAreas CommonFormat positionabsolute"
+        style="Z-INDEX: 10; Color: #bbb;"
+        ng-bind="ctrl.underlinesText">
+			</textarea>
+        <!-- gray background -->
+			<textarea id="ShadowToInputField"
+        readonly
+        class="AllTextAreas CommonFormat positionabsolute backgroundInput"
+        style="Z-INDEX: 5;COLOR: #fdd;"
+        ng-bind="ctrl.wrongSpaces">
+			</textarea>
+        <!-- GrayedText -->
+			<textarea id="GrayedText"
+        readonly
+        class="AllTextAreas CommonFormat positionabsolute"
+        style="Z-INDEX: 15; COLOR: #bbb;"
+        ng-bind="ctrl.grayText">
+			</textarea>
+        <!-- Red error text -->
+			<textarea id="RedText"
+                readonly
+                class="AllTextAreas CommonFormat positionabsolute"
+                style="Z-INDEX: 30; COLOR: #F00;"
+                ng-bind="ctrl.redText">
+			</textarea>
+
+        <!-- User Input -->
+			<textarea id="UserText"
+        autofocus
+        class="CommonFormat positionabsolute"
+        ng-model="ctrl.userText"
+        ng-change="ctrl.onUserTextChange()"
+        ng-enter="ctrl.onUserTextEnter()"
+        spellcheck="false">
+			</textarea>
+
+      <img ng-show="ctrl.isPhrasesEqual()" class="propersign" id="propersign" src="resources/img/Welldone32.png">
+      </div>
+
+
     </div>
+
   </div>
-
-
 </div>
 
